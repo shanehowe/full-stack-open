@@ -46,7 +46,7 @@ const App = () => {
       }
 
     } else {
-      
+
       personsServices.create(newPerson)
       setPersons(persons.concat(newPerson))
 
@@ -82,7 +82,7 @@ const App = () => {
 
       setTimeout(() => {
         setMessage([null])
-      }, 6000)
+      }, 5000)
     }
   }
 
