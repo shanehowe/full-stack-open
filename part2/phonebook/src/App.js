@@ -44,7 +44,7 @@ const App = () => {
           .finally(
             setTimeout(() => {
               setMessage([null])
-            }, 5000)
+            }, 3000)
           )
       }
 
@@ -56,7 +56,7 @@ const App = () => {
       setMessage([`${newPerson.name} added!`, 'green'])
       setTimeout(() => {
         setMessage([null])
-      }, 5000)
+      }, 3000)
     }
 
     setNewName('')
@@ -85,7 +85,7 @@ const App = () => {
 
       setTimeout(() => {
         setMessage([null])
-      }, 5000)
+      }, 3000)
     }
   }
 
