@@ -13,16 +13,19 @@ const App = () => {
   const [filter, setFilter] = useState('')
   const [message, setMessage] = useState([null])
 
+  // get all persons
   useEffect(() => {
     personsServices
       .getAll()
       .then(initialPersons => setPersons(initialPersons))
   },[])
 
+  // add person
   const addPerson = (event) => {
     event.preventDefault()
     
-    const newPerson = { name: newName, number: newNumber, id: persons.length+1 }
+    const newPerson = { name: newName, number: newNumber }
+
     const duplicate = persons.filter(person => person.name === newPerson.name)
 
     if (duplicate.length >= 1) {
@@ -75,7 +78,7 @@ const App = () => {
     const firstName = name.split(' ')[0]
 
     if (window.confirm(`Delete ${firstName}?`)) {
-      axios.delete(`http://localhost:3001/persons/${id}`)
+      axios.delete(`http://localhost:3001/api/persons/${id}`)
       setPersons(persons.filter(p => p.id !== id))
 
       setMessage([`${name} has been deleted!`, 'green'])
