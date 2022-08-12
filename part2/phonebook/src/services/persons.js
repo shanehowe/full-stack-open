@@ -1,10 +1,9 @@
 import axios from "axios";
 
-// const baseUrl = "http://localhost:3001"
-const baseUrl = "https://pure-garden-14225.herokuapp.com"
+const baseUrl = '/api/persons'
 
 const getAll = () => {
-    const request = axios.get(baseUrl + '/api/persons')
+    const request = axios.get(baseUrl)
     return request.then(response => response.data)
 }
 
@@ -14,7 +13,7 @@ const update = (id, newObject) => {
 }
 
 const create = (newObject) => {
-    return axios.post(`${baseUrl}/api/persons`, newObject)
+    return axios.post(baseUrl, newObject)
 }
 
 const personsServices = { getAll, update, create }
