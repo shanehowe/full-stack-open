@@ -4,7 +4,6 @@ import { Filter } from './components/Filter';
 import { PersonForm } from './components/PersonForm';
 import { Persons } from './components/Persons';
 import { Notification } from './components/Notification';
-import axios from 'axios';
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
@@ -41,23 +40,26 @@ const App = () => {
           .catch(error => {
             setMessage([`${newPerson.name} has already been removed from the server.`, 'red'])
           })
-          .finally(
-            setTimeout(() => {
-              setMessage([null])
-            }, 3000)
-          )
       }
 
     } else {
 
-      personsServices.create(newPerson)
-      setPersons(persons.concat(newPerson))
+      personsServices
+            .create(newPerson)
+            .then(response => {
+              setPersons(persons.concat(newPerson))
 
-      setMessage([`${newPerson.name} added!`, 'green'])
-      setTimeout(() => {
-        setMessage([null])
-      }, 3000)
+              setMessage([`${newPerson.name} added!`, 'green'])
+            })
+            .catch(error => {
+              setMessage([error.response.data.error, 'red'])
+              console.log(error.response.data.error)
+            })
     }
+
+    setTimeout(() => {
+      setMessage([null])
+    }, 3000)
 
     setNewName('')
     setNewNumber('')
@@ -75,17 +77,18 @@ const App = () => {
   }
 
   const handleDelete = (id, name) => {
-    const firstName = name.split(' ')[0]
 
-    if (window.confirm(`Delete ${firstName}?`)) {
-      axios.delete(`http://localhost:3001/api/persons/${id}`)
-      setPersons(persons.filter(p => p.id !== id))
+    if (window.confirm(`Delete ${name}?`)) {
+      personsServices.remove(id)
+          .then(response => {
+            setPersons(persons.filter(p => p.id !== id))
 
-      setMessage([`${name} has been deleted!`, 'green'])
-
-      setTimeout(() => {
-        setMessage([null])
-      }, 3000)
+            setMessage([`${name} has been deleted!`, 'green'])
+      
+            setTimeout(() => {
+              setMessage([null])
+            }, 3000)
+          })
     }
   }
 
