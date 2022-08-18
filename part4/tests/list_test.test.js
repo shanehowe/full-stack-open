@@ -44,3 +44,11 @@ describe('most likes', () => {
         expect(result).toEqual({ 'Georgina Wharton': 12 })
     })
 })
+
+describe('most blogs', () => {
+    test('returns the author who has the largest amount of blogs', () => {
+        const result = list_helper.mostBlogs(manyBlogs)
+
+        expect(result).toEqual({ 'Georgina Wharton': 2 })
+    })
+})
