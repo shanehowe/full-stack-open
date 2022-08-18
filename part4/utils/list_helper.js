@@ -1,6 +1,6 @@
-const { manyBlogs } = require('../tests/blog_helper')
 const dummy = (blogs) => {
-    return 1
+    blogs = 1
+    return blogs
 }
 
 const totalLikes = (blogs) => {

@@ -31,7 +31,7 @@ describe('total likes', () => {
 describe('favorite blog', () => {
     test('returns the blog with the most amount of likes', () => {
         const result = list_helper.favoriteBlog(manyBlogs)
-        const expected = {title: "Georginas blog", author: "Georgina Wharton", likes: 9}
+        const expected = {title: 'Georginas blog', author: 'Georgina Wharton', likes: 9}
 
         expect(result).toEqual(expected)
     })

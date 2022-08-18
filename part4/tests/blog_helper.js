@@ -21,25 +21,25 @@ const manyBlogs = [
         __v: 0
     },
     {
-        title: "My other blog",
-        author: "Shane Howe",
-        url: "myotherblog.com",
+        title: 'My other blog',
+        author: 'Shane Howe',
+        url: 'myotherblog.com',
         likes: 4,
-        id: "62fc2df7396b58c564b7672a"
+        id: '62fc2df7396b58c564b7672a'
     },
     {
-        title: "Georginas blog",
-        author: "Georgina Wharton",
-        url: "whartonsblogs.com",
+        title: 'Georginas blog',
+        author: 'Georgina Wharton',
+        url: 'whartonsblogs.com',
         likes: 9,
-        id: "62fc2efe396b58c564b7672d"
+        id: '62fc2efe396b58c564b7672d'
     },
     {
-        title: "Georginas second blog",
-        author: "Georgina Wharton",
-        url: "whartonsblogs.com",
+        title: 'Georginas second blog',
+        author: 'Georgina Wharton',
+        url: 'whartonsblogs.com',
         likes: 3,
-        id: "62fc2efe396b58c564b7672d"
+        id: '62fc2efe396b58c564b7672d'
     }
 ]
 
