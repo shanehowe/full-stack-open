@@ -24,7 +24,7 @@ describe('total likes', () => {
     test('blog list with multiple blogs returns the sum of all likes in the list', () => {
         const result = list_helper.totalLikes(manyBlogs)
 
-        expect(result).toBe(18)
+        expect(result).toBe(21)
     })
 })
 
@@ -34,5 +34,13 @@ describe('favorite blog', () => {
         const expected = {title: "Georginas blog", author: "Georgina Wharton", likes: 9}
 
         expect(result).toEqual(expected)
+    })
+})
+
+describe('most likes', () => {
+    test('returnd author whose blog posts have the largest amount of likes', () => {
+        const result = list_helper.mostLikes(manyBlogs)
+
+        expect(result).toEqual({ 'Georgina Wharton': 12 })
     })
 })

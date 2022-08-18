@@ -33,6 +33,13 @@ const manyBlogs = [
         url: "whartonsblogs.com",
         likes: 9,
         id: "62fc2efe396b58c564b7672d"
+    },
+    {
+        title: "Georginas second blog",
+        author: "Georgina Wharton",
+        url: "whartonsblogs.com",
+        likes: 3,
+        id: "62fc2efe396b58c564b7672d"
     }
 ]
 
