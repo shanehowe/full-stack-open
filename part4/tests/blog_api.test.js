@@ -62,7 +62,7 @@ test('if the likes property is missing from the request, it will default to the 
 test('backend responds with status 400 when making request with missing url and title', async () => {
     const blog = {
         title: '',
-        author: "JP Howe",
+        author: 'JP Howe',
         url: ''
     };
 
@@ -70,7 +70,8 @@ test('backend responds with status 400 when making request with missing url and 
         .post('/api/blogs')
         .send(blog)
         .expect(400);
-})
+});
+
 afterAll(() => {
     mongoose.connection.close();
 });
