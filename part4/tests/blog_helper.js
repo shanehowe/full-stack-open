@@ -1,4 +1,4 @@
-const emptyBlog = []
+const emptyBlog = [];
 
 const oneBlog = [
     {
@@ -9,7 +9,7 @@ const oneBlog = [
         likes: 5,
         __v: 0
     }
-]
+];
 
 const manyBlogs = [
     {
@@ -41,10 +41,10 @@ const manyBlogs = [
         likes: 3,
         id: '62fc2efe396b58c564b7672d'
     }
-]
+];
 
 module.exports = {
     emptyBlog,
     oneBlog,
     manyBlogs
-}
+};
