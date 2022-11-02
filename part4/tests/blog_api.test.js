@@ -24,10 +24,9 @@ test('making a post request to /api/blogs is successful', async () => {
     const initialBlogs = await Blog.find({});
 
     const blog = {
-
-        title: 'test blog 2',
-        author: 'test author 2',
-        url: 'www.awesomeblog.com',
+        title: 'a great blog',
+        author: 'some guy',
+        url: 'www.someguyswebsite.com',
         likes: 1
     };
 
@@ -43,7 +42,7 @@ test('making a post request to /api/blogs is successful', async () => {
 test('if the likes property is missing from the request, it will default to the value 0', async () => {
     const blog = {
         title: 'Shanes blog with no likes',
-        author: 'Chubs The Great',
+        author: 'Shane',
         url: 'www.shane.com'
     };
 
