@@ -7,15 +7,13 @@ const api = supertest(app);
 
 const { initialBlogs } = require('./blog_helper');
 
-beforeEach(async () => {
-    await Blog.deleteMany({});
-    for (let blog of initialBlogs) {
-        let blogObject = new Blog(blog);
-        await blogObject.save();
-    }
-});
 
 describe('when there is initially some blogs saved', () => {
+    beforeEach(async () => {
+        await Blog.deleteMany({});
+        await Blog.insertMany(initialBlogs);
+    }, 10000);
+
     test('blogs are returned as json', async () => {
 
         await api
@@ -23,7 +21,7 @@ describe('when there is initially some blogs saved', () => {
             .expect(200)
             .expect('Content-Type', /application\/json/);
 
-    }, 100000);
+    }, 10000);
 
     test('verifies unique identifier of blog posts is named _id', async () => {
         const blogs = await Blog.find({});
@@ -89,7 +87,7 @@ describe('when deleting a blog', () => {
         const blogsAfterDelete = await Blog.find({});
     
         expect(blogsAfterDelete.length).toBe(blogs.length - 1);
-    }, 100000);
+    }, 10000);
 });
 
 describe('when adding a blog', () => {
