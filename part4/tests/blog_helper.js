@@ -43,8 +43,24 @@ const manyBlogs = [
     }
 ];
 
+const initialBlogs = [
+    {
+        title: 'React patterns',
+        author: 'Michael Chan',
+        url: 'https://reactpatterns.com/',
+        likes: 7
+    },
+    {
+        title: 'Go To Statement Considered Harmful',
+        author: 'Edsger W. Dijkstra',
+        url: 'http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html',
+        likes: 5
+    }
+];
+
 module.exports = {
     emptyBlog,
     oneBlog,
-    manyBlogs
+    manyBlogs,
+    initialBlogs
 };
