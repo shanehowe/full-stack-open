@@ -16,6 +16,14 @@ describe('when there is initially one user at db', () => {
         await user.save();
     }, 10000);
 
+    test('users are returned as json', async () => {
+        await api
+            .get('/api/users')
+            .expect(200)
+            .expect('Content-Type', /application\/json/);
+        
+    }, 10000);
+
     test('creation succeeds with a fresh username', async () => {
         const usersAtStart = await usersInDb();
 
@@ -72,6 +80,31 @@ describe('when there is initially one user at db', () => {
         expect(usersAtEnd.length).toBe(usersAtStart.length);
     }
     , 10000);
+
+    describe('viewing a specific user', () => {
+        test('succeeds with a valid id', async () => {
+            const usersAtStart = await usersInDb();
+
+            const userToView = usersAtStart[0];
+
+            const resultUser = await api
+                .get(`/api/users/${userToView.id}`)
+                .expect(200)
+                .expect('Content-Type', /application\/json/);
+            
+            const processedUserToView = JSON.parse(JSON.stringify(userToView));
+            expect(resultUser.body).toEqual(processedUserToView);
+        }, 10000);
+
+
+        test('fails with statuscode 400 id is invalid', async () => {
+            const invalidId = '5a3d5da59070081a82a3445';
+
+            await api
+                .get(`/api/users/${invalidId}`)
+                .expect(400);
+        }, 10000);
+    });
 });
 
 afterAll(() => {
