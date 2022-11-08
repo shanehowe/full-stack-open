@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const app = require('../app');
-const { initialUsers, usersInDb } = require('./api_helper');
+const { initialUsers } = require('./api_helper');
 const supertest = require('supertest');
 
 const api = supertest(app);
