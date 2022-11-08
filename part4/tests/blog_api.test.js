@@ -134,7 +134,7 @@ describe('when deleting a blog', () => {
         token = jwt.sign(userForToken, process.env.SECRET);
     });
 
-    test('succeeds with status code 204 if id is valid', async () => {
+    test('succeeds with code 204 id is valid & is the creater deleting', async () => {
         const testBlog = {
             title: 'test blog',
             author: 'test author',
@@ -159,6 +159,17 @@ describe('when deleting a blog', () => {
 
         expect(blogsAfterDelete.length).toBe(blogs.length - 1);
     }, 10000);
+
+    test('fails with code 404 if blog does not exist', async () => {
+        const nonExistingId = '5a3d5da59070081a82a3445';
+
+        const result = await api
+            .delete(`api/blogs/${nonExistingId}`)
+            .set('Authorization', `bearer ${token}`)
+            .expect(404)
+
+        expect(result.body.error).toContain('blog does not exist');
+    })
 });
 
 describe('when adding a blog', () => {
@@ -209,7 +220,7 @@ describe('when updating a blog', () => {
         const userForToken = { username: user.username, id: user._id };
         token = jwt.sign(userForToken, process.env.SECRET);
     });
-    
+
     test('succeeds with status code 200 if id is valid', async () => {
 
         const testBlog = {
