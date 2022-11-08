@@ -161,15 +161,15 @@ describe('when deleting a blog', () => {
     }, 10000);
 
     test('fails with code 404 if blog does not exist', async () => {
-        const nonExistingId = '5a3d5da59070081a82a3445';
+        const nonExistingId = '6369a74a39cd762e6a6e7e67';
 
         const result = await api
-            .delete(`api/blogs/${nonExistingId}`)
+            .delete(`/api/blogs/${nonExistingId}`)
             .set('Authorization', `bearer ${token}`)
             .expect(404)
 
         expect(result.body.error).toContain('blog does not exist');
-    })
+    });
 });
 
 describe('when adding a blog', () => {
