@@ -23,9 +23,6 @@ usersRouter.get('/:id', async (request, response) => {
 usersRouter.post('/', async (request, response) => {
     const { username, name, password } = request.body;
 
-    // TODO: validate username and password
-    // Both username and password must be at least 3 characters long
-    // username must be unique
     if (!(username && password)) {
         return response.status(400).json({
             error: 'username and password must be provided'
