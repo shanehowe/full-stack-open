@@ -22,7 +22,7 @@ describe('When there is initially one user in the db', () => {
             const userToSend = {
                 username: initialUsers[0].username,
                 password: initialUsers[0].password
-            }
+            };
 
             await api
                 .post('/api/login')
@@ -35,12 +35,12 @@ describe('When there is initially one user in the db', () => {
             const userToSend = {
                 username: initialUsers[0].username,
                 password: initialUsers[0].password
-            }
+            };
 
             const signedUser = await api
                 .post('/api/login')
                 .send(userToSend)
-                .expect(200)
+                .expect(200);
 
             expect(signedUser.body.token).toBeDefined();
             expect(signedUser.body.username).toBe(userToSend.username);
@@ -51,8 +51,8 @@ describe('When there is initially one user in the db', () => {
         test('backend responds with a 401 unauthorized and appropriate error', async () => {
             const userToSend = {
                 username: initialUsers[0].username,
-                password: "wrong"
-            }
+                password: 'wrong'
+            };
 
             const result = await api
                 .post('/api/login')

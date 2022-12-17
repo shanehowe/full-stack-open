@@ -114,7 +114,7 @@ describe('when certain properties are missing', () => {
             .send({
                 title: 'blog with no token',
                 author: 'the tokenless author',
-                url: "www.whereismytoken.com"
+                url: 'www.whereismytoken.com'
             })
             .expect(401);
     });
@@ -166,7 +166,7 @@ describe('when deleting a blog', () => {
         const result = await api
             .delete(`/api/blogs/${nonExistingId}`)
             .set('Authorization', `bearer ${token}`)
-            .expect(404)
+            .expect(404);
 
         expect(result.body.error).toContain('blog does not exist');
     });
